@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LLM Dashboard</title>
+  </head>
+  <body>
+    <header>
+      <h1>LLM Dashboard</h1>
+      <p>Compare leading large language models — capabilities, context, and cost.</p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#what-is-llm">What is an LLM?</a></li>
+        <li><a href="#what-is-token">What is a Token?</a></li>
+        <li><a href="#comparison">LLM Comparison</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section id="what-is-llm">
+        <h2>What is an LLM?</h2>
+        <p>
+          <strong>LLM</strong> stands for <strong>Large Language Model</strong> — a type of
+          artificial intelligence trained on vast amounts of text from books, websites, code,
+          and other sources. During training, the model learns statistical patterns in language:
+          which words and phrases tend to follow one another. At inference time, it does not
+          “look up” answers in a database; instead it predicts the next token (small chunk of
+          text) again and again, building a coherent reply one step at a time.
+        </p>
+        <p>
+          Because they are trained at scale, LLMs can draft emails, summarize documents, write
+          code, translate languages, and hold multi-turn conversations — though they can also
+          hallucinate facts and should be verified for high-stakes use.
+        </p>
+        <p>
+          Well-known examples include <strong>GPT-4o</strong> (OpenAI), used in ChatGPT and many
+          APIs; <strong>Claude 3.5 Sonnet</strong> (Anthropic), known for long-context writing and
+          analysis; and <strong>Gemini 1.5 Pro</strong> (Google), which supports very large context
+          windows for document-heavy workflows.
+        </p>
+      </section>
+
+      <section id="what-is-token">
+        <h2>What is a Token?</h2>
+        <p>
+          A <strong>token</strong> is the basic unit of text that an LLM reads and generates — not
+          always a whole word. Tokenizers split text into chunks; on average, one token is roughly
+          <strong>3–4 characters</strong> or about <strong>¾ of a word</strong> in English. Short
+          common words may be one token; longer or rare words are often split into several tokens.
+        </p>
+        <p>
+          Tokens matter because providers bill by token count and cap how many tokens fit in a
+          single request. The <strong>context window</strong> is the maximum number of input plus
+          output tokens in one conversation; exceeding it means older messages must be dropped or
+          summarized.
+        </p>
+        <p>
+          For example, the sentence <em>"Hello, world!"</em> might be tokenized roughly as:
+          <code>["Hello", ",", " world", "!"]</code> — four tokens depending on the model’s
+          tokenizer.
+        </p>
+        <p>
+          <strong>English vs Azerbaijani:</strong> The same idea in English often uses fewer tokens
+          than in Azerbaijani. Most tokenizers are trained heavily on English and Latin-script
+          European languages, so English words frequently map to efficient, familiar subword units.
+          Azerbaijani text — with agglutinative suffixes, Turkic vocabulary, and less representation
+          in training data — tends to be split into more, smaller pieces. A short English prompt
+          like <em>"Summarize this article."</em> might use about 5 tokens, while an equivalent
+          Azerbaijani sentence such as <em>"Bu məqaləni xülasə edin."</em> can require noticeably
+          more tokens for the same meaning. That means Azerbaijani users often pay more per message
+          and fill the context window faster than English users for comparable content.
+        </p>
+      </section>
+
+      <section id="comparison">
+        <h2>LLM Comparison</h2>
+        <table>
+          <caption>
+            Snapshot of five widely used API models (pricing per 1M tokens, USD). Rates change —
+            confirm on official provider pages before production use.
+          </caption>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Provider</th>
+              <th>Context Window</th>
+              <th>Input Price (per 1M tokens)</th>
+              <th>Output Price (per 1M tokens)</th>
+              <th>Reasoning</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>GPT-4o</td>
+              <td>OpenAI</td>
+              <td>128K</td>
+              <td>$2.50</td>
+              <td>$10.00</td>
+              <td>✗</td>
+            </tr>
+            <tr>
+              <td>Claude 3.5 Sonnet</td>
+              <td>Anthropic</td>
+              <td>200K</td>
+              <td>$3.00</td>
+              <td>$15.00</td>
+              <td>✗</td>
+            </tr>
+            <tr>
+              <td>Gemini 1.5 Pro</td>
+              <td>Google</td>
+              <td>1M</td>
+              <td>$1.25</td>
+              <td>$5.00</td>
+              <td>✗</td>
+            </tr>
+            <tr>
+              <td>o4-mini</td>
+              <td>OpenAI</td>
+              <td>200K</td>
+              <td>$1.10</td>
+              <td>$4.40</td>
+              <td>✓</td>
+            </tr>
+            <tr>
+              <td>DeepSeek R1</td>
+              <td>DeepSeek</td>
+              <td>128K</td>
+              <td>$0.55</td>
+              <td>$2.19</td>
+              <td>✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer>
+      <p><strong>Data sources (checked May 2026):</strong></p>
+      <ul>
+        <li>
+          <a href="https://openai.com/api/pricing/">OpenAI API pricing</a>
+        </li>
+        <li>
+          <a href="https://www.anthropic.com/pricing">Anthropic pricing</a>
+        </li>
+        <li>
+          <a href="https://ai.google.dev/pricing">Google AI (Gemini) pricing</a>
+        </li>
+        <li>
+          <a href="https://api-docs.deepseek.com/quick_start/pricing">DeepSeek API pricing</a>
+        </li>
+        <li>
+          <a href="https://artificialanalysis.ai/models">Artificial Analysis — model comparison</a>
+        </li>
+      </ul>
+      <p>BONUS Lab 01 — LLM Dashboard (Part 1: HTML)</p>
+    </footer>
+  </body>
+</html>
